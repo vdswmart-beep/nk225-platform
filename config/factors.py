@@ -1,0 +1,1 @@
+FACTOR_WEIGHTS = {    "quality": 0.25, "growth": 0.20,    "valuation": 0.20, "momentum": 0.20, "risk": 0.15,}LONG_THRESHOLD  = 70SHORT_THRESHOLD = 30TOP_N_IDEAS     = 10

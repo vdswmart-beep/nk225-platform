@@ -1,0 +1,40 @@
+# ============================================================
+# Nikkei 225 — Equity Research Platform
+# Requirements
+# Install: pip install -r requirements.txt
+# ============================================================
+
+# ── Web Dashboard ────────────────────────────────────────────
+dash>=2.18.0
+dash-bootstrap-components>=1.6.0
+plotly>=5.24.0
+
+# ── Data ─────────────────────────────────────────────────────
+pandas>=2.2.0
+numpy>=2.0.0
+yfinance>=0.2.55
+
+# ── Numerical / Statistics ───────────────────────────────────
+scipy>=1.14.0
+statsmodels>=0.14.4
+scikit-learn>=1.6.0
+
+# ── Portfolio Optimisation ───────────────────────────────────
+# scipy already covers HRP + risk parity (no cvxpy required for current methods)
+
+# ── Execution (Interactive Brokers) ──────────────────────────
+ib-insync>=0.9.86
+
+# ── Storage / IO ─────────────────────────────────────────────
+pyarrow>=18.0.0
+openpyxl>=3.1.5
+
+# ── Utilities ────────────────────────────────────────────────
+python-dotenv>=1.0.1
+joblib>=1.4.2
+tqdm>=4.67.0
+requests>=2.32.0
+
+# ── AI / Grok (xAI) ──────────────────────────────────────────
+# Uses requests (already above) — no extra SDK needed
+# Grok API is OpenAI-compatible via https://api.x.ai/v1

@@ -1,0 +1,92 @@
+2026-06-21 21:17:43,579 | INFO     | run | Univers : default → 10 tickers
+2026-06-21 21:17:43,579 | INFO     | run | Période : 2022-01-01 → 2026-01-01
+2026-06-21 21:17:47,782 | INFO     | MasterPipeline | ============================================================
+2026-06-21 21:17:47,783 | INFO     | MasterPipeline | MASTER PIPELINE STARTED
+2026-06-21 21:17:47,783 | INFO     | MasterPipeline | Universe: 10 tickers | 2022-01-01 → 2026-01-01
+2026-06-21 21:17:47,783 | INFO     | MasterPipeline | ============================================================
+2026-06-21 21:17:47,783 | INFO     | MasterPipeline | ▶ Data
+2026-06-21 21:17:47,783 | INFO     | DataPipeline | Loading data for 10 tickers: 2022-01-01 → 2026-01-01
+2026-06-21 21:17:52,402 | INFO     | DataPipeline | Prices shape: (9780, 5)
+2026-06-21 21:18:01,244 | INFO     | DataPipeline | Fundamentals shape: (10, 172)
+2026-06-21 21:18:01,267 | INFO     | DataPipeline | Returns shape: (977, 10)
+2026-06-21 21:18:01,268 | INFO     | MasterPipeline | ✓ Data (13.49s)
+2026-06-21 21:18:01,268 | INFO     | MasterPipeline | ▶ Features
+2026-06-21 21:18:01,268 | INFO     | FeaturePipeline | Building feature matrix...
+2026-06-21 21:18:01,418 | INFO     | FeaturePipeline | Features (long): (194013, 4)
+2026-06-21 21:18:01,444 | INFO     | FeaturePipeline | Features (wide): (9780, 23)
+2026-06-21 21:18:01,444 | INFO     | MasterPipeline | ✓ Features (0.18s)
+2026-06-21 21:18:01,444 | INFO     | MasterPipeline | ▶ Research
+2026-06-21 21:18:01,444 | INFO     | ResearchPipeline | Running research pipeline...
+2026-06-21 21:18:03,417 | INFO     | ResearchPipeline | Valid factors: ['bollinger_pos', 'earnings_growth', 'mom_12m', 'mom_1m', 'mom_3m', 'mom_6m', 'rsi']
+2026-06-21 21:18:03,417 | INFO     | MasterPipeline | ✓ Research (1.97s)
+2026-06-21 21:18:03,417 | INFO     | MasterPipeline | ▶ Ideas
+2026-06-21 21:18:03,417 | INFO     | IdeaPipeline | Generating ideas — regime: neutral
+2026-06-21 21:18:03,417 | INFO     | InvestmentPipeline | Pipeline started
+2026-06-21 21:18:03,421 | INFO     | InvestmentPipeline | Pipeline completed successfully
+2026-06-21 21:18:03,421 | INFO     | IdeaPipeline | Longs: 1 | Shorts: 3
+2026-06-21 21:18:03,421 | INFO     | MasterPipeline | ✓ Ideas (0.0s)
+2026-06-21 21:18:03,421 | INFO     | MasterPipeline | ▶ Portfolio
+2026-06-21 21:18:03,421 | INFO     | PortfolioPipeline | Construction du portefeuille — méthode: risk_parity
+2026-06-21 21:18:03,422 | ERROR    | MasterPipeline | Pipeline failed: build_portfolio() got an unexpected keyword argument 'long_tickers'
+Traceback (most recent call last):
+  File "/Users/martinvanderstraten/full_project/pipelines/master_pipeline.py", line 96, in run
+    out.portfolio = self._step(
+                    ^^^^^^^^^^^
+  File "/Users/martinvanderstraten/full_project/pipelines/master_pipeline.py", line 67, in _step
+    result = fn()
+             ^^^^
+  File "/Users/martinvanderstraten/full_project/pipelines/master_pipeline.py", line 97, in <lambda>
+    "Portfolio", lambda: self.portfolio_pipe.run(out.data.returns, all_ideas, self.portfolio_method), timings
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/martinvanderstraten/full_project/pipelines/portfolio_pipeline.py", line 61, in run
+    port = build_portfolio(
+           ^^^^^^^^^^^^^^^^
+TypeError: build_portfolio() got an unexpected keyword argument 'long_tickers'
+2026-06-21 21:18:03,423 | INFO     | MasterPipeline | MASTER PIPELINE COMPLETED in 15.64s | success=False
+2026-06-21 21:18:03,423 | ERROR    | run | Pipeline échoué
+2026-06-21 21:28:27,964 | INFO     | run | Univers : default → 10 tickers
+2026-06-21 21:28:27,964 | INFO     | run | Période : 2022-01-01 → 2026-01-01
+2026-06-21 21:28:29,312 | INFO     | MasterPipeline | ============================================================
+2026-06-21 21:28:29,312 | INFO     | MasterPipeline | MASTER PIPELINE STARTED
+2026-06-21 21:28:29,312 | INFO     | MasterPipeline | Universe: 10 tickers | 2022-01-01 → 2026-01-01
+2026-06-21 21:28:29,312 | INFO     | MasterPipeline | ============================================================
+2026-06-21 21:28:29,312 | INFO     | MasterPipeline | ▶ Data
+2026-06-21 21:28:29,312 | INFO     | DataPipeline | Loading data for 10 tickers: 2022-01-01 → 2026-01-01
+2026-06-21 21:28:29,346 | INFO     | DataPipeline | Prices shape: (9780, 5)
+2026-06-21 21:28:34,640 | INFO     | DataPipeline | Fundamentals shape: (10, 172)
+2026-06-21 21:28:34,661 | INFO     | DataPipeline | Returns shape: (977, 10)
+2026-06-21 21:28:34,661 | INFO     | MasterPipeline | ✓ Data (5.35s)
+2026-06-21 21:28:34,661 | INFO     | MasterPipeline | ▶ Features
+2026-06-21 21:28:34,661 | INFO     | FeaturePipeline | Building feature matrix...
+2026-06-21 21:28:34,802 | INFO     | FeaturePipeline | Features (long): (194013, 4)
+2026-06-21 21:28:34,830 | INFO     | FeaturePipeline | Features (wide): (9780, 23)
+2026-06-21 21:28:34,830 | INFO     | MasterPipeline | ✓ Features (0.17s)
+2026-06-21 21:28:34,830 | INFO     | MasterPipeline | ▶ Research
+2026-06-21 21:28:34,830 | INFO     | ResearchPipeline | Running research pipeline...
+2026-06-21 21:28:36,788 | INFO     | ResearchPipeline | Valid factors: ['bollinger_pos', 'earnings_growth', 'mom_12m', 'mom_1m', 'mom_3m', 'mom_6m', 'rsi']
+2026-06-21 21:28:36,788 | INFO     | MasterPipeline | ✓ Research (1.96s)
+2026-06-21 21:28:36,788 | INFO     | MasterPipeline | ▶ Ideas
+2026-06-21 21:28:36,788 | INFO     | IdeaPipeline | Generating ideas — regime: neutral
+2026-06-21 21:28:36,788 | INFO     | InvestmentPipeline | Pipeline started
+2026-06-21 21:28:36,792 | INFO     | InvestmentPipeline | Pipeline completed successfully
+2026-06-21 21:28:36,792 | INFO     | IdeaPipeline | Longs: 1 | Shorts: 3
+2026-06-21 21:28:36,792 | INFO     | MasterPipeline | ✓ Ideas (0.0s)
+2026-06-21 21:28:36,792 | INFO     | MasterPipeline | ▶ Portfolio
+2026-06-21 21:28:36,792 | INFO     | PortfolioPipeline | Construction du portefeuille — méthode: risk_parity
+2026-06-21 21:28:36,800 | INFO     | PortfolioPipeline | Portefeuille: 7 longs / 3 shorts | Gross: 1.00 | Net: 0.41
+2026-06-21 21:28:36,801 | INFO     | MasterPipeline | ✓ Portfolio (0.01s)
+2026-06-21 21:28:36,801 | INFO     | MasterPipeline | ▶ Risk
+2026-06-21 21:28:36,801 | INFO     | RiskPipeline | Computing risk metrics...
+2026-06-21 21:28:36,802 | INFO     | MasterPipeline | ✓ Risk (0.0s)
+2026-06-21 21:28:36,802 | INFO     | MasterPipeline | ▶ Execution
+2026-06-21 21:28:36,802 | INFO     | ExecutionPipeline | Backtest mode — execution skipped
+2026-06-21 21:28:36,802 | INFO     | MasterPipeline | ✓ Execution (0.0s)
+2026-06-21 21:28:36,802 | INFO     | MasterPipeline | MASTER PIPELINE COMPLETED in 7.49s | success=True
+2026-06-21 21:28:36,802 | INFO     | run | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-06-21 21:28:36,802 | INFO     | run | RÉSULTATS PIPELINE
+2026-06-21 21:28:36,802 | INFO     | run |   Longs  : 1
+2026-06-21 21:28:36,802 | INFO     | run |   Shorts : 3
+2026-06-21 21:28:36,802 | INFO     | run |   VaR    : 2.40%
+2026-06-21 21:28:36,802 | INFO     | run |   Sharpe : 1.43
+2026-06-21 21:28:36,802 | INFO     | run |   MaxDD  : -25.45%
+2026-06-21 21:28:36,802 | INFO     | run | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
